@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SmartButler</string>
+    <string name="text_setting">设置</string>
+    <string name="tab_butler">智能管家</string>
+    <string name="tab_wechat">微信精选</string>
+    <string name="tab_girl">美女社区</string>
+    <string name="tab_user">个人中心</string>
+</resources>
