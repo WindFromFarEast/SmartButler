@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.studio.smartbutler">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
         android:name=".application.BaseApplication"
         android:allowBackup="true"
@@ -11,6 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <!--设置页-->
+        <activity
+            android:name=".ui.SettingActivity"
+            android:label="@string/text_setting">
+
+        </activity>
+
+        <!--闪屏页-->
+        <activity android:name=".ui.SplashActivity"
+            android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,10 +38,8 @@
         </activity>
 
         <activity
-            android:name=".ui.SettingActivity"
-            android:label="@string/text_setting">
-
-        </activity>
+            android:name=".ui.GuideActivity"
+            android:theme="@style/FullScreen"/>
     </application>
 
 </manifest>

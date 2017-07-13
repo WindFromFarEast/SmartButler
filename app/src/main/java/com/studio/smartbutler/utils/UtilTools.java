@@ -1,5 +1,10 @@
 package com.studio.smartbutler.utils;
 
+import android.graphics.Typeface;
+import android.widget.TextView;
+
+import com.studio.smartbutler.application.BaseApplication;
+
 /**
  * project name: SmartButler
  * package name: com.studio.smartbutler.utils
@@ -11,5 +16,10 @@ package com.studio.smartbutler.utils;
 
 public class UtilTools
 {
-
+    //设置字体
+    public static void setTypeface(TextView textView)
+    {
+        Typeface typeface=Typeface.createFromAsset(BaseApplication.getContext().getAssets(),"fonts/FONT.TTF");
+        textView.setTypeface(typeface);
+    }
 }
