@@ -17,5 +17,6 @@ public class StaticClass
     public static final String FIRST_RUN="first_run";
     //腾讯Bugly需要的AppId
     public static final String BUGLY_APP_ID="97f5a37836";
-
+    //Bomb Key
+    public static final String BMOB_APP_ID="9ad1efaaa3fa7be4abab2a7496fab8b8";
 }
