@@ -5,4 +5,8 @@
     <string name="tab_wechat">微信精选</string>
     <string name="tab_girl">美女社区</string>
     <string name="tab_user">个人中心</string>
+    <string name="choose_avatar_album">相册</string>
+    <string name="choose_avatar_camera">相机</string>
+    <string name="cancel">取消</string>
+    <string name="deny_permission">拒绝权限将无法使用该功能!</string>
 </resources>

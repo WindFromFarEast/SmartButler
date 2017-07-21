@@ -1,6 +1,7 @@
 package com.studio.smartbutler.entity;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * project name: SmartButler
@@ -16,6 +17,7 @@ public class MyUser extends BmobUser
     private Boolean sex;
     private String desc;
     private Integer age;
+    private String avatarUrl;
 
     public Boolean getSex()
     {
@@ -45,5 +47,15 @@ public class MyUser extends BmobUser
     public void setAge(Integer age)
     {
         this.age = age;
+    }
+
+    public String getAvatarUrl()
+    {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl)
+    {
+        this.avatarUrl = avatarUrl;
     }
 }

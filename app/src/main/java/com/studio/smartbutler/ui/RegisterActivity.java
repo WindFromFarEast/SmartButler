@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.studio.smartbutler.R;
 import com.studio.smartbutler.entity.MyUser;
 import com.studio.smartbutler.utils.L;
+import com.studio.smartbutler.utils.StaticClass;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -95,6 +96,7 @@ public class RegisterActivity extends BaseActivity
                         myUser.setDesc(desc);
                         myUser.setEmail(email);
                         myUser.setSex(sex);
+                        myUser.setAvatarUrl(StaticClass.DEFAULT_AVATAR_URL);
                         myUser.signUp(new SaveListener<MyUser>()
                         {
                             @Override
