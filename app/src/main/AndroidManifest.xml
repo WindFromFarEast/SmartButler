@@ -74,6 +74,12 @@
         <!--忘记密码页-->
         <activity android:name=".ui.ForgetPasswordActivity"/>
 
+        <!--物流查询页-->
+        <activity android:name=".ui.CourierActivity"/>
+
+        <!--归属地查询页-->
+        <activity android:name=".ui.PhoneActivity"/>
+
     </application>
 
 </manifest>

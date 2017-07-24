@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="姓名"/>
+                android:text="@string/name"/>
 
             <EditText
                 android:id="@+id/et_username"
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="性别"/>
+                android:text="@string/sex"/>
 
             <EditText
                 android:id="@+id/et_sex"
@@ -84,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="年龄"/>
+                android:text="@string/age"/>
 
             <EditText
                 android:id="@+id/et_age"
@@ -103,7 +103,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="简介"/>
+                android:text="@string/desc"/>
 
             <EditText
                 android:id="@+id/et_desc"
@@ -127,15 +127,16 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@android:color/white"
-                android:text="确认修改"
+                android:text="@string/change_ok"
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/tv_courier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:text="物流查询"/>
+                android:text="@string/courier_query"/>
 
             <View
                 android:layout_marginTop="15dp"
@@ -145,11 +146,12 @@
                 android:alpha="0.5"/>
 
             <TextView
+                android:id="@+id/tv_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
-                android:text="归属地查询"/>
+                android:text="@string/place_query"/>
 
             <View
                 android:layout_marginTop="15dp"
@@ -167,7 +169,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@android:color/white"
-                android:text="退出登录"/>
+                android:text="@string/exit"/>
 
         </LinearLayout>
 

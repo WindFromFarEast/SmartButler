@@ -27,12 +27,10 @@ public class StaticClass
     public static final int CUT_PHOTO=1004;
     //运行时权限处理——读写SD卡请求码
     public static final int WRITE_EXTERNAL_STORAGE_CODE=1005;
-    //media类型Uri的Authority
-    public static final String MEDIA_URI_AUTHORITY="com.android.providers.media.documents";
-    //downloads类型Uri的包名
-    public static final String DOWNLOADS_URI_AUTHORITY="com.android.providers.downloads.documents";
-    //downloads类型Uri的路径
-    public static final String DOWNLOADS_URI_PATH="content://downloads/public_downloads";
     //默认头像地址
     public static final String DEFAULT_AVATAR_URL="http://img4.imgtn.bdimg.com/it/u=2238386155,4137504811&fm=26&gp=0.jpg";
+    //聚合数据物流信息ApiKey
+    public static final String JUHE_API_KEY="fb038635c6dd2202a25d15941e4702f0";
+    //聚合数据归属地ApiKey
+    public static final String PHONE_QUERY_KEY="0a1ee393e1003dbb62ee7c0b8c370507";
 }

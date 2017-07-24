@@ -25,11 +25,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.studio.smartbutler.R;
 import com.studio.smartbutler.entity.MyUser;
+import com.studio.smartbutler.ui.CourierActivity;
 import com.studio.smartbutler.ui.LoginActivity;
+import com.studio.smartbutler.ui.PhoneActivity;
 import com.studio.smartbutler.utils.L;
 import com.studio.smartbutler.utils.StaticClass;
 
@@ -69,6 +72,8 @@ public class UserFragment extends Fragment implements View.OnClickListener
     private Button btn_album;
     private Button btn_camera;
     private Button btn_cancel;
+    private TextView tv_courier;
+    private TextView tv_place;
     private CircleImageView circle_avatar;
     private Dialog avatarClickDialog;
     private View dialogView;
@@ -96,12 +101,16 @@ public class UserFragment extends Fragment implements View.OnClickListener
         btn_exit= (Button) view.findViewById(R.id.btn_exit);
         btn_change_ok= (Button) view.findViewById(R.id.btn_change_ok);
         circle_avatar= (CircleImageView) view.findViewById(R.id.circle_avatar);
+        tv_courier= (TextView) view.findViewById(R.id.tv_courier);
+        tv_place= (TextView) view.findViewById(R.id.tv_place);
 
-        //为编辑资料、退出登录、确认修改资料和选择头像的按钮添加监听器
+        //添加监听器
         btn_change_userinfo.setOnClickListener(this);
         btn_exit.setOnClickListener(this);
         btn_change_ok.setOnClickListener(this);
         circle_avatar.setOnClickListener(this);
+        tv_courier.setOnClickListener(this);
+        tv_place.setOnClickListener(this);
 
         //默认不允许在输入框中输入
         setEnabled(false);
@@ -192,6 +201,17 @@ public class UserFragment extends Fragment implements View.OnClickListener
             case R.id.btn_cancel:
             {
                 showDialogForAvatarOrDismiss(false);
+                break;
+            }
+            case R.id.tv_courier:
+            {
+                //点击物流查询跳转到物流查询页面
+                startActivity(new Intent(getActivity(), CourierActivity.class));
+                break;
+            }
+            case R.id.tv_place:
+            {
+                startActivity(new Intent(getActivity(),PhoneActivity.class));
                 break;
             }
         }
@@ -441,11 +461,14 @@ public class UserFragment extends Fragment implements View.OnClickListener
             case StaticClass.CUT_PHOTO:
             {
                 setPictureToView(data);
-                Bundle bundle=data.getExtras();
-                Bitmap bitmap= (Bitmap) bundle.get("data");
-                Uri uri=getImageUri(getActivity(),bitmap);
-                //将头像保存到服务器
-                saveAvatarToBmob(getUriPath(uri,null));
+                if (data!=null)
+                {
+                    Bundle bundle = data.getExtras();
+                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    Uri uri = getImageUri(getActivity(), bitmap);
+                    //将头像保存到服务器
+                    saveAvatarToBmob(getUriPath(uri, null));
+                }
             }
         }
     }
@@ -509,7 +532,7 @@ public class UserFragment extends Fragment implements View.OnClickListener
     }
 
     //保存用户头像至服务器
-    private void saveAvatarToBmob(String filePath)
+    private void saveAvatarToBmob(final String filePath)
     {
         final BmobFile bmobFile=new BmobFile(new File(filePath));
         //上传图片至Bmob服务器
@@ -520,7 +543,29 @@ public class UserFragment extends Fragment implements View.OnClickListener
             {
                 if (e==null)
                 {
-                    avatarUrl=bmobFile.getFileUrl();//必须在done方法里面实现对上传文件Url的存储,否则之后再进行bmobFile.getFileUrl是获取不到Url的
+                    avatarUrl=bmobFile.getFileUrl();//必须在done回调方法里面实现上传成功后的逻辑,因此uploadblock方法开辟了子线程
+                    L.i("图片路径:"+filePath);
+                    MyUser myUser=new MyUser();
+                    myUser.setAvatarUrl(avatarUrl);
+                    BmobUser bmobUser=BmobUser.getCurrentUser(MyUser.class);
+                    L.i("头像地址:"+avatarUrl);
+                    myUser.update(bmobUser.getObjectId(), new UpdateListener()
+                    {
+                        @Override
+                        public void done(BmobException e)
+                        {
+
+                            if (e==null)
+                            {
+                                Toast.makeText(getActivity(), "头像更新成功", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Toast.makeText(getActivity(),"头像更新失败",Toast.LENGTH_SHORT).show();
+                                L.i("头像更新失败原因:"+e.toString());
+                            }
+                        }
+                    });
                     Toast.makeText(getActivity(), "头像上传成功", Toast.LENGTH_SHORT).show();
                 }
                 else
@@ -529,28 +574,7 @@ public class UserFragment extends Fragment implements View.OnClickListener
                 }
             }
         });
-        L.i("图片路径:"+filePath);
-        MyUser myUser=new MyUser();
-        myUser.setAvatarUrl(avatarUrl);
-        BmobUser bmobUser=BmobUser.getCurrentUser(MyUser.class);
-        L.i("头像地址:"+avatarUrl);
-        myUser.update(bmobUser.getObjectId(), new UpdateListener()
-        {
-            @Override
-            public void done(BmobException e)
-            {
 
-                if (e==null)
-                {
-                    Toast.makeText(getActivity(), "头像更新成功", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(getActivity(),"头像更新失败",Toast.LENGTH_SHORT).show();
-                    L.i("头像更新失败原因:"+e.toString());
-                }
-            }
-        });
     }
 
     private String getUriPath(Uri uri,String selection)

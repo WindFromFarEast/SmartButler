@@ -35,12 +35,18 @@ dependencies {
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     //3.5.5：请务必查看下面注释[1]
-    compile 'cn.bmob.android:bmob-sdk:3.5.5'
+    compile ('cn.bmob.android:bmob-sdk:3.5.5'){
+        exclude group: 'io.reactivex'
+    }
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
     compile 'cn.bmob.android:http-legacy:1.0'
     //MKLoader
     compile 'com.tuyenmonkey:mkloader:1.3.0'
     //CircleImageView圆形头像
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    //RxVolley
+    compile ('com.kymjs.rxvolley:rxvolley:1.1.4') {
+        exclude group: 'io.reactivex'
+    }
     testCompile 'junit:junit:4.12'
 }
