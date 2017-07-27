@@ -33,4 +33,10 @@ public class StaticClass
     public static final String JUHE_API_KEY="fb038635c6dd2202a25d15941e4702f0";
     //聚合数据归属地ApiKey
     public static final String PHONE_QUERY_KEY="0a1ee393e1003dbb62ee7c0b8c370507";
+    //聚合数据问答机器人ApiKey
+    public static final String ROBOT_KEY="502f388b130fdc635dea5112c693116c";
+    //左边文本的type
+    public static final int TYPE_LEFT_TEXT=1;
+    //右边文本的type
+    public static final int TYPE_RIGHT_TEXT=2;
 }

@@ -8,6 +8,7 @@
     <string name="choose_avatar_album">相册</string>
     <string name="choose_avatar_camera">相机</string>
     <string name="cancel">取消</string>
+    <string name="forget_password">忘记密码</string>
     <string name="deny_permission">拒绝权限将无法使用该功能!</string>
     <string name="courier_query">物流查询</string>
     <string name="change_ok">确认修改</string>
@@ -21,6 +22,8 @@
     <string name="courier_number">订单号</string>
     <string name="query">查询</string>
     <string name="input_no_empty">输入框不能为空</string>
+    <string name="content_text_limit">输入内容不能大于30字</string>
+    <string name="phone_number_query">归属地查询</string>
     <string name="input_phone_number">请输入手机号</string>
     <string name="one">1</string>
     <string name="two">2</string>
@@ -36,4 +39,8 @@
     <string name="china_mobile">移动</string>
     <string name="china_unicom">联通</string>
     <string name="china_telecom">电信</string>
+    <string name="left">左边</string>
+    <string name="right">右边</string>
+    <string name="send">发送</string>
+    <string name="input_tip">请输入内容</string>
 </resources>

@@ -72,13 +72,16 @@
             android:label="注册"/>
 
         <!--忘记密码页-->
-        <activity android:name=".ui.ForgetPasswordActivity"/>
+        <activity android:name=".ui.ForgetPasswordActivity"
+            android:label="@string/forget_password"/>
 
         <!--物流查询页-->
-        <activity android:name=".ui.CourierActivity"/>
+        <activity android:name=".ui.CourierActivity"
+            android:label="@string/courier_query"/>
 
         <!--归属地查询页-->
-        <activity android:name=".ui.PhoneActivity"/>
+        <activity android:name=".ui.PhoneActivity"
+            android:label="@string/phone_number_query"/>
 
     </application>
 

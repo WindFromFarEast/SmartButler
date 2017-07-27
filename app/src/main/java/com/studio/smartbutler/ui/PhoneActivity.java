@@ -187,7 +187,7 @@ public class PhoneActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-
+    //将手机号码详细信息利用TextView显示出来
     private void showPhoneInfo(String province, String city, String company, String zip)
     {
         //显示文字信息
