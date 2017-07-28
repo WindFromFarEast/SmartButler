@@ -83,6 +83,9 @@
         <activity android:name=".ui.PhoneActivity"
             android:label="@string/phone_number_query"/>
 
+        <!--微信精选详情页面-->
+        <activity android:name=".ui.WebViewActivity"/>
+
     </application>
 
 </manifest>

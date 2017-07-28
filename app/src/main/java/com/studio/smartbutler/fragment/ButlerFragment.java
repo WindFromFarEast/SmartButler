@@ -130,6 +130,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener
         return text;
     }
 
+    //发送用户消息
     private void showUserResponse(String text)
     {
         ChattingText chattingText=new ChattingText();
@@ -142,6 +143,7 @@ public class ButlerFragment extends Fragment implements View.OnClickListener
         lv_chatting.setSelection(lv_chatting.getBottom());
     }
 
+    //发送机器人回复消息
     private void showButlerResponse(String text)
     {
         ChattingText chattingText=new ChattingText();

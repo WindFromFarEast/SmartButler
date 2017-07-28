@@ -35,6 +35,8 @@ public class StaticClass
     public static final String PHONE_QUERY_KEY="0a1ee393e1003dbb62ee7c0b8c370507";
     //聚合数据问答机器人ApiKey
     public static final String ROBOT_KEY="502f388b130fdc635dea5112c693116c";
+    //聚合数据微信精选ApiKey
+    public static final String WECHAT_KEY="ae9b11a5539c39113968e9908edd4490";
     //左边文本的type
     public static final int TYPE_LEFT_TEXT=1;
     //右边文本的type
