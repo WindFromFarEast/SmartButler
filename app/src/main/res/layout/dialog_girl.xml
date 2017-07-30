@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:gravity="center"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <!--每行两张图片的GridView-->
-    <GridView
-        android:id="@+id/girl_gridView"
-        android:numColumns="2"
+    <ImageView
+        android:id="@+id/iv_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>

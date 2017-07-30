@@ -64,6 +64,8 @@ public class ButlerFragment extends Fragment implements View.OnClickListener
         lv_chatting.setAdapter(adapter);
         //取消ListView的分割线
         lv_chatting.setDivider(null);
+        //机器人欢迎话语
+        showButlerResponse("你好，人家是向玮鑫的小管家啦~");
 
         btn_chatting_send.setOnClickListener(this);
         et_chatting_text.setOnClickListener(this);
@@ -96,7 +98,14 @@ public class ButlerFragment extends Fragment implements View.OnClickListener
                             {
                                 //结果返回成功
                                 L.i("机器人回答Json:"+response);
-                                showButlerResponse(getTextForJson(response).toString());
+                                if (getTextForJson(response)!=null)
+                                {
+                                    showButlerResponse(getTextForJson(response).toString());
+                                }
+                                else
+                                {
+                                    showButlerResponse(getActivity().getString(R.string.robot_reply_error));
+                                }
                             }
                         });
                     }

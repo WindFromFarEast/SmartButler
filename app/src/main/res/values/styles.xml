@@ -31,5 +31,17 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:scrollHorizontally">true</item>
     </style>
+    
+    <!--自定义Dialog动画style-->
+    <style name="pop_anim_style">
+        <item name="android:windowExitAnimation">@anim/pop_out</item><!--退出动画-->
+        <item name="android:windowEnterAnimation">@anim/pop_in</item><!--进入动画-->
+    </style>
+    
+    <!--自定义Dialog 背景半透明,无标题-->
+    <style name="Theme_Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 
 </resources>

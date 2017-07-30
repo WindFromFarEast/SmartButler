@@ -43,4 +43,6 @@
     <string name="right">右边</string>
     <string name="send">发送</string>
     <string name="input_tip">请输入内容</string>
+    <string name="robot_reply_error">你刚刚说的话宝宝没有成功发送到我这里啦QAQ</string>
+    <string name="text_welfare">福利</string>
 </resources>
