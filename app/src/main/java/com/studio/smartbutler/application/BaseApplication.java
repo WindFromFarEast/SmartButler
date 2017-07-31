@@ -3,6 +3,8 @@ package com.studio.smartbutler.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.studio.smartbutler.utils.StaticClass;
 import com.tencent.bugly.crashreport.CrashReport;
 
@@ -31,6 +33,8 @@ public class BaseApplication extends Application
         Bmob.initialize(this, StaticClass.BMOB_APP_ID);
         //初始化上下文
         mContext=getApplicationContext();
+        //科大讯飞语音合成功能初始化
+        SpeechUtility.createUtility(getApplicationContext(), SpeechConstant.APPID +"="+StaticClass.TTS_APP_ID);
     }
 
     public static Context getContext()

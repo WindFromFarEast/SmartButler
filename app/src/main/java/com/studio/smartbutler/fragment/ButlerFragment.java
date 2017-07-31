@@ -11,12 +11,18 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechSynthesizer;
+import com.iflytek.cloud.SynthesizerListener;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
 import com.studio.smartbutler.R;
 import com.studio.smartbutler.adapter.ChattingAdapter;
+import com.studio.smartbutler.application.BaseApplication;
 import com.studio.smartbutler.entity.ChattingText;
 import com.studio.smartbutler.utils.L;
+import com.studio.smartbutler.utils.SharedUtils;
 import com.studio.smartbutler.utils.StaticClass;
 
 import org.json.JSONException;
@@ -163,5 +169,69 @@ public class ButlerFragment extends Fragment implements View.OnClickListener
         adapter.notifyDataSetChanged();
         //下滑到最底部
         lv_chatting.setSelection(lv_chatting.getBottom());
+        //由设置中心的语音播放开关的状态决定是否让机器人语音回答
+        if (SharedUtils.getBoolean("voice_key",false))
+        {
+            butlerSpeak(text);
+        }
     }
+
+    //语音合成功能
+    private void butlerSpeak(String text)
+    {
+        //创建SpeechSynthesizer对象,本地合成时第二个参数传InitListener
+        SpeechSynthesizer mTts=SpeechSynthesizer.createSynthesizer(BaseApplication.getContext(),null);
+        //语音参数设置
+        mTts.setParameter( SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD);//设置云端
+        mTts.setParameter( SpeechConstant.SPEED,"50");//设置语速
+        mTts.setParameter( SpeechConstant.VOICE_NAME, "xiaoyan" );//设置发音人
+        mTts.setParameter(SpeechConstant.VOLUME,"80");//设置音量
+        //语音播放
+        mTts.startSpeaking(text,synthesizerListener);
+    }
+
+    private SynthesizerListener synthesizerListener=new SynthesizerListener()
+    {
+        @Override
+        public void onSpeakBegin()
+        {
+
+        }
+
+        @Override
+        public void onBufferProgress(int i, int i1, int i2, String s)
+        {
+
+        }
+
+        @Override
+        public void onSpeakPaused()
+        {
+
+        }
+
+        @Override
+        public void onSpeakResumed()
+        {
+
+        }
+
+        @Override
+        public void onSpeakProgress(int i, int i1, int i2)
+        {
+
+        }
+
+        @Override
+        public void onCompleted(SpeechError speechError)
+        {
+
+        }
+
+        @Override
+        public void onEvent(int i, int i1, int i2, Bundle bundle)
+        {
+
+        }
+    };
 }

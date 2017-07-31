@@ -41,4 +41,6 @@ public class StaticClass
     public static final int TYPE_LEFT_TEXT=1;
     //右边文本的type
     public static final int TYPE_RIGHT_TEXT=2;
+    //科大讯飞TTS AppId
+    public static final String TTS_APP_ID="597e9be2";
 }
