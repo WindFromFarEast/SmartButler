@@ -2,34 +2,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.studio.smartbutler">
 
-    <!--查看LOG-->
-    <uses-permission android:name="android.permission.READ_LOGS" />
-    <!--允许联网 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!--获取sd卡写的权限，用于文件上传和下载-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--允许读取手机状态 用于创建BmobInstallation-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <!-- 查看LOG -->
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!-- 允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- 获取sd卡写的权限，用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <!--允许程序改变网络连接状态 -->
+    <!-- 允许程序改变网络连接状态 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
-    <!--读取联系人权限，上传联系人需要用到此权限 -->
+    <!-- 读取联系人权限，上传联系人需要用到此权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!--外存储读权限，构建语法需要用到此权限 -->
+    <!-- 外存储读权限，构建语法需要用到此权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--配置权限，用来记录应用配置信息 -->
+    <!-- 配置权限，用来记录应用配置信息 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-    <!--定位信息是敏感信息，可通过Setting.setLocationEnable(false)关闭定位请求 -->
+    <!-- 定位信息是敏感信息，可通过Setting.setLocationEnable(false)关闭定位请求 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <!--如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <!--窗口权限-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:name=".application.BaseApplication"
@@ -39,10 +44,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
-            android:authorities="com.studio.smartbutler.fileprovider"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.studio.smartbutler.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -50,18 +54,18 @@
                 android:resource="@xml/file_paths"/>
         </provider>
 
-        <!--主页-->
+        <!-- 主页 -->
         <activity android:name=".MainActivity"/>
 
-        <!--设置页-->
+        <!-- 设置页 -->
         <activity
             android:name=".ui.SettingActivity"
             android:label="@string/text_setting">
-
         </activity>
 
-        <!--闪屏页-->
-        <activity android:name=".ui.SplashActivity"
+        <!-- 闪屏页 -->
+        <activity
+            android:name=".ui.SplashActivity"
             android:theme="@style/FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -70,35 +74,44 @@
             </intent-filter>
         </activity>
 
-        <!--引导页-->
+        <!-- 引导页 -->
         <activity
             android:name=".ui.GuideActivity"
             android:theme="@style/FullScreen"/>
 
-        <!--登陆页-->
+        <!-- 登陆页 -->
         <activity
             android:name=".ui.LoginActivity"
             android:label="登陆"/>
 
-        <!--注册页-->
+        <!-- 注册页 -->
         <activity
             android:name=".ui.RegisterActivity"
             android:label="注册"/>
 
-        <!--忘记密码页-->
-        <activity android:name=".ui.ForgetPasswordActivity"
+        <!-- 忘记密码页 -->
+        <activity
+            android:name=".ui.ForgetPasswordActivity"
             android:label="@string/forget_password"/>
 
-        <!--物流查询页-->
-        <activity android:name=".ui.CourierActivity"
+        <!-- 物流查询页 -->
+        <activity
+            android:name=".ui.CourierActivity"
             android:label="@string/courier_query"/>
 
-        <!--归属地查询页-->
-        <activity android:name=".ui.PhoneActivity"
+        <!-- 归属地查询页 -->
+        <activity
+            android:name=".ui.PhoneActivity"
             android:label="@string/phone_number_query"/>
 
-        <!--微信精选详情页面-->
+        <!-- 微信精选详情页面 -->
         <activity android:name=".ui.WebViewActivity"/>
+
+        <service
+            android:name=".service.SmsService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
 
     </application>
 

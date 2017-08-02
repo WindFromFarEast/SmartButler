@@ -43,4 +43,10 @@ public class StaticClass
     public static final int TYPE_RIGHT_TEXT=2;
     //科大讯飞TTS AppId
     public static final String TTS_APP_ID="597e9be2";
+    //接受短信的Action
+    public static final String SMS_ACTION="android.provider.Telephony.SMS_RECEIVED";
+    //SMS权限申请请求码
+    public static final int PERMISSION_CODE=1006;
+    //WINDOW权限申请请求码
+    public static final int PERMISSION_WINDOW_CODE=5463&0xffffff00;
 }

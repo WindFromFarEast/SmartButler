@@ -45,4 +45,9 @@
     <string name="input_tip">请输入内容</string>
     <string name="robot_reply_error">你刚刚说的话宝宝没有成功发送到我这里啦QAQ</string>
     <string name="text_welfare">福利</string>
+    <string name="voice_switch_title">管家语音回复</string>
+    <string name="voice_switch_desc">智能管家回答时将文字用声音播报</string>
+    <string name="sms_switch_title">短信提醒</string>
+    <string name="sms_switch_content">开启此功能后在收到短信时会弹出提示框提醒</string>
+    <string name="reply">回复</string>
 </resources>

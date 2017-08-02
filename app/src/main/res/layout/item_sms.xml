@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.studio.smartbutler.view.DispatchLinearLayout
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/window_white"
+        android:paddingLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="200dp">
+
+        <TextView
+            android:id="@+id/tv_sms_sender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="发件人——13110203356"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/tv_sms_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:text="这里是内容"
+            android:textSize="15sp"
+            android:textColor="@color/colorAccent"/>
+
+        <Button
+            android:id="@+id/btn_sms_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_start"
+            android:layout_margin="10dp"
+            android:text="@string/reply"
+            android:textColor="@android:color/white"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+
+</com.studio.smartbutler.view.DispatchLinearLayout>

@@ -14,7 +14,9 @@ import com.studio.smartbutler.fragment.ButlerFragment;
 import com.studio.smartbutler.fragment.GirlFragment;
 import com.studio.smartbutler.fragment.UserFragment;
 import com.studio.smartbutler.fragment.WechatFragment;
+import com.studio.smartbutler.service.SmsService;
 import com.studio.smartbutler.ui.SettingActivity;
+import com.studio.smartbutler.utils.SharedUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,5 +135,11 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+        //若是短信提醒功能是开启状态则直接开启短信提醒服务
+        if (SharedUtils.getBoolean("sms_key",false))
+        {
+            startService(new Intent(MainActivity.this,SmsService.class));
+        }
     }
 }
