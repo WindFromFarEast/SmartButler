@@ -50,4 +50,12 @@
     <string name="sms_switch_title">短信提醒</string>
     <string name="sms_switch_content">开启此功能后在收到短信时会弹出提示框提醒</string>
     <string name="reply">回复</string>
+    <string name="check_version">检查更新</string>
+    <string name="update">更新</string>
+    <string name="is_latest_version">当前已是最新版本</string>
+    <string name="new_version_existed">检测到新版本</string>
+    <string name="update_or_not">是否开始更新？</string>
+    <string name="update_dialog_positive">更新</string>
+    <string name="update_dialog_nagetive">取消</string>
+    <string name="download_fail">下载失败</string>
 </resources>

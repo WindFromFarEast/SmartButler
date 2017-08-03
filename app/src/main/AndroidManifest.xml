@@ -107,6 +107,10 @@
         <!-- 微信精选详情页面 -->
         <activity android:name=".ui.WebViewActivity"/>
 
+        <!--版本更新页面-->
+        <activity android:name=".ui.UpdateActivity"
+            android:label="@string/update"/>
+
         <service
             android:name=".service.SmsService"
             android:enabled="true"

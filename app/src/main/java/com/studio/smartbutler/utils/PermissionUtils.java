@@ -24,7 +24,7 @@ public class PermissionUtils
     private static List<String> mList=new ArrayList<>();
 
     //同时申请多个权限,返回未申请过权限的数量
-    public static int requestPermission(Activity activity, String... permission)
+    public static int requestPermission(Activity activity,int requestCode ,String... permission)
     {
         //清空List
         mList.clear();
@@ -46,7 +46,7 @@ public class PermissionUtils
             permission=mList.toArray(new String[mList.size()]);
             if (permission.length!=0)
             {
-                ActivityCompat.requestPermissions(activity, permission, StaticClass.PERMISSION_CODE);
+                ActivityCompat.requestPermissions(activity, permission, requestCode);
             }
         }
         else
