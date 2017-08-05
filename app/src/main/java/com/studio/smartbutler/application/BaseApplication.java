@@ -3,6 +3,7 @@ package com.studio.smartbutler.application;
 import android.app.Application;
 import android.content.Context;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.studio.smartbutler.utils.StaticClass;
@@ -35,6 +36,8 @@ public class BaseApplication extends Application
         mContext=getApplicationContext();
         //科大讯飞语音合成功能初始化
         SpeechUtility.createUtility(getApplicationContext(), SpeechConstant.APPID +"="+StaticClass.TTS_APP_ID);
+        //初始化百度地图SDK
+        SDKInitializer.initialize(getApplicationContext());
     }
 
     public static Context getContext()

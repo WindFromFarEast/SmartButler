@@ -11,15 +11,17 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:src="@drawable/guide_strong"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
 
         <TextView
+            android:id="@+id/tv_guide_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="THREE"
-            android:textSize="30sp"/>
+            android:layout_marginTop="90dp"
+            android:text="强大"
+            android:textSize="40sp"/>
 
     </LinearLayout>
 

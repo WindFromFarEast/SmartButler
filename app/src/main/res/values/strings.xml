@@ -65,4 +65,6 @@
     <string name="textview_my_qrcode_content">请输入二维码显示的内容</string>
     <string name="btn_qrcode_ok">提交</string>
     <string name="activity_my_qrcode_label">生成二维码</string>
+    <string name="setting_item_location_title">我的位置</string>
+    <string name="setting_item_location_desc">在地图上显示当前位置</string>
 </resources>

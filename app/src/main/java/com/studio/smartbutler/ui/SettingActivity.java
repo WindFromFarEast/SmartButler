@@ -54,6 +54,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private LinearLayout ll_scan_qrcode;
     //生成我的二维码项
     private LinearLayout ll_my_qrcode;
+    //查询我的位置项
+    private LinearLayout ll_location;
     //当前版本号
     private int currentVersionCode;
     //当前版本名
@@ -80,6 +82,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         tv_version_name= (TextView) findViewById(R.id.tv_version_name);
         ll_scan_qrcode= (LinearLayout) findViewById(R.id.ll_scan_qrcode);
         ll_my_qrcode= (LinearLayout) findViewById(R.id.ll_my_qrcode);
+        ll_location= (LinearLayout) findViewById(R.id.ll_location);
         //获取当前版本信息显示在界面上
         showCurrentVersionInfo();
         //为各种开关设置监听事件
@@ -88,6 +91,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         ll_check_version.setOnClickListener(this);
         ll_scan_qrcode.setOnClickListener(this);
         ll_my_qrcode.setOnClickListener(this);
+        ll_location.setOnClickListener(this);
         //进入界面后读取之前保存的开关状态
         switch_voice.setChecked(SharedUtils.getBoolean("voice_key",false));
         switch_sms.setChecked(SharedUtils.getBoolean("sms_key",false));
@@ -179,6 +183,16 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             {
                 Intent intent=new Intent(this,MyQRCodeActivity.class);
                 startActivity(intent);
+                break;
+            }
+            case R.id.ll_location:
+            {
+                //权限判断,拥有权限则进入我的位置界面
+                if (PermissionUtils.requestPermission(this,StaticClass.PERMISSION_MAP_CODE,Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.READ_PHONE_STATE,Manifest.permission.WRITE_EXTERNAL_STORAGE)==0)
+                {
+                    startActivity(new Intent(this,LocationActivity.class));
+                }
                 break;
             }
         }
@@ -281,6 +295,20 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                         }
                     }
                     searchLatestVersion();
+                    break;
+                }
+                case StaticClass.PERMISSION_MAP_CODE:
+                {
+                    for (int result:grantResults)
+                    {
+                        if (result!=PackageManager.PERMISSION_GRANTED)
+                        {
+                            Toast.makeText(SettingActivity.this,getApplicationContext().getString(R.string.deny_permission),
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    startActivity(new Intent(this,LocationActivity.class));
                     break;
                 }
             }

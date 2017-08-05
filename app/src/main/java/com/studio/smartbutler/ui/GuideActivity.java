@@ -1,6 +1,7 @@
 package com.studio.smartbutler.ui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,9 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.studio.smartbutler.MainActivity;
 import com.studio.smartbutler.R;
+import com.studio.smartbutler.utils.UtilTools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class GuideActivity extends AppCompatActivity
     private View view1,view2,view3;
     private ImageView point1,point2,point3;
     private Button btn_start,btn_leap;
+    private TextView tv_guide_one,tv_guide_two,tv_guide_three;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -51,6 +54,10 @@ public class GuideActivity extends AppCompatActivity
         point2= (ImageView) findViewById(R.id.point2);
         point3= (ImageView) findViewById(R.id.point3);
 
+        tv_guide_one= (TextView) findViewById(R.id.tv_guide_one);
+        tv_guide_two= (TextView) findViewById(R.id.tv_guide_two);
+        tv_guide_three= (TextView) findViewById(R.id.tv_guide_three);
+
         setPointImg(0);
 
         btn_leap= (Button) findViewById(R.id.btn_leap);
@@ -60,6 +67,8 @@ public class GuideActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(GuideActivity.this,LoginActivity.class));
+                //进入主页后关闭引导页
+                finish();
             }
         });
 
@@ -67,6 +76,16 @@ public class GuideActivity extends AppCompatActivity
         view1= inflater.inflate(R.layout.guide_one,null);
         view2= inflater.inflate(R.layout.guide_two,null);
         view3= inflater.inflate(R.layout.guide_three,null);
+
+        tv_guide_one= (TextView) view1.findViewById(R.id.tv_guide_one);
+        tv_guide_two= (TextView) view2.findViewById(R.id.tv_guide_two);
+        tv_guide_three= (TextView) view3.findViewById(R.id.tv_guide_three);
+
+        //修改引导页文字
+        UtilTools.setTypeface(tv_guide_one);
+        UtilTools.setTypeface(tv_guide_two);
+        UtilTools.setTypeface(tv_guide_three);
+
         mList.add(view1);
         mList.add(view2);
         mList.add(view3);
@@ -130,7 +149,9 @@ public class GuideActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(GuideActivity.this, MainActivity.class));
+                startActivity(new Intent(GuideActivity.this, LoginActivity.class));
+                //进入主页后关闭引导页
+                finish();
             }
         });
     }

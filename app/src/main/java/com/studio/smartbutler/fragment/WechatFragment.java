@@ -3,6 +3,7 @@ package com.studio.smartbutler.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,10 @@ public class WechatFragment extends Fragment
     private WechatAdapter adapter;
     //Adapter数据源
     private List<WechatNews> wechatNewsList=new ArrayList<>();
+    //下拉刷新布局
+    private SwipeRefreshLayout swipeRefreshLayout;
+    //聚合微信精选Api
+    private String url="http://v.juhe.cn/weixin/query?"+"ps=50&"+"key="+ StaticClass.WECHAT_KEY;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -55,26 +60,16 @@ public class WechatFragment extends Fragment
     private void initView(View view)
     {
         wechat_mList= (ListView) view.findViewById(R.id.wechat_mList);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.wechat_swipe_refresh);
+        //设置下拉刷新进度条颜色
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
         //取消ListView的下划线
         wechat_mList.setDivider(null);
-        //利用聚合Api获取微信精选存放到数据源中
-        String url="http://v.juhe.cn/weixin/query?key="+ StaticClass.WECHAT_KEY;
         //初始化适配器,为ListView绑定适配器
         adapter=new WechatAdapter(wechatNewsList);
         wechat_mList.setAdapter(adapter);
-        RxVolley.get(url, new HttpCallback()
-        {
-            @Override
-            public void onSuccess(String response)
-            {
-                //成功获得新闻Json数据
-                L.i("微信精选:"+response.toString());
-                //解析Json数据,完成数据源
-                parseJson(response);
-                //通知适配器刷新数据源
-                adapter.notifyDataSetChanged();
-            }
-        });
+        //获取新闻数据源
+        getNews(url);
         //为ListView设置监听器
         wechat_mList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -87,6 +82,35 @@ public class WechatFragment extends Fragment
                 intent.putExtra("title",wechatNews.getTitle().toString());
                 intent.putExtra("url",wechatNews.getUrl().toString());
                 startActivity(intent);
+            }
+        });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
+        {
+            @Override
+            public void onRefresh()
+            {
+                //下拉刷新
+                getNews(url);
+            }
+        });
+    }
+
+    //获取微信精选数据源
+    private void getNews(String url)
+    {
+        RxVolley.get(url, new HttpCallback()
+        {
+            @Override
+            public void onSuccess(String response)
+            {
+                //成功获得新闻Json数据
+                L.i("微信精选:"+response.toString());
+                //解析Json数据,完成数据源
+                parseJson(response);
+                //通知适配器刷新数据源
+                adapter.notifyDataSetChanged();
+                //关闭刷新进度
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

@@ -6,14 +6,16 @@
               android:layout_height="match_parent">
 
     <ImageView
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/guide_smart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
 
     <TextView
+        android:id="@+id/tv_guide_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ONE"
-        android:textSize="30sp"/>
+        android:text="智能"
+        android:layout_marginTop="100dp"
+        android:textSize="40sp"/>
 
 </LinearLayout>
