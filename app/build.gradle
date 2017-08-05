@@ -59,4 +59,5 @@ dependencies {
     //NumberProgressBar
     compile 'com.daimajia.numberprogressbar:library:1.4@aar'
     testCompile 'junit:junit:4.12'
+    compile project(path: ':libzxing')
 }

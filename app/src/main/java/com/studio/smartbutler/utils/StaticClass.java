@@ -51,4 +51,6 @@ public class StaticClass
     public static final int PERMISSION_WINDOW_CODE=5463&0xffffff00;
     //最新版本配置信息地址
     public static final String LATEST_VERSION_INFO_URL="http://192.168.0.112:8080/xwx/version.json";
+    //前往扫描二维码界面的请求码
+    public static final int SCAN_QRCODE_REQUEST_CODE=0;
 }

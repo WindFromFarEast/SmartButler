@@ -25,6 +25,7 @@ import com.studio.smartbutler.utils.L;
 import com.studio.smartbutler.utils.PermissionUtils;
 import com.studio.smartbutler.utils.SharedUtils;
 import com.studio.smartbutler.utils.StaticClass;
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,6 +50,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     private LinearLayout ll_check_version;
     //版本名显示
     private TextView tv_version_name;
+    //二维码扫描项
+    private LinearLayout ll_scan_qrcode;
+    //生成我的二维码项
+    private LinearLayout ll_my_qrcode;
     //当前版本号
     private int currentVersionCode;
     //当前版本名
@@ -73,12 +78,16 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         switch_sms= (Switch) findViewById(R.id.switch_sms);
         ll_check_version= (LinearLayout) findViewById(R.id.ll_check_version);
         tv_version_name= (TextView) findViewById(R.id.tv_version_name);
+        ll_scan_qrcode= (LinearLayout) findViewById(R.id.ll_scan_qrcode);
+        ll_my_qrcode= (LinearLayout) findViewById(R.id.ll_my_qrcode);
         //获取当前版本信息显示在界面上
         showCurrentVersionInfo();
         //为各种开关设置监听事件
         switch_voice.setOnClickListener(this);
         switch_sms.setOnClickListener(this);
         ll_check_version.setOnClickListener(this);
+        ll_scan_qrcode.setOnClickListener(this);
+        ll_my_qrcode.setOnClickListener(this);
         //进入界面后读取之前保存的开关状态
         switch_voice.setChecked(SharedUtils.getBoolean("voice_key",false));
         switch_sms.setChecked(SharedUtils.getBoolean("sms_key",false));
@@ -158,6 +167,18 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     //如果申请过读写内存的权限则检测最新版本
                     searchLatestVersion();
                 }
+                break;
+            }
+            case R.id.ll_scan_qrcode:
+            {
+                Intent openCameraIntent=new Intent(this,CaptureActivity.class);
+                startActivityForResult(openCameraIntent,StaticClass.SCAN_QRCODE_REQUEST_CODE);
+                break;
+            }
+            case R.id.ll_my_qrcode:
+            {
+                Intent intent=new Intent(this,MyQRCodeActivity.class);
+                startActivity(intent);
                 break;
             }
         }
@@ -293,6 +314,16 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     }
                 }
                 break;
+            }
+            case StaticClass.SCAN_QRCODE_REQUEST_CODE:
+            {
+                if (resultCode==RESULT_OK)
+                {
+                    //扫描二维码成功
+                    Bundle bundle = data.getExtras();
+                    String scanResult = bundle.getString("result");//获取扫描二维码得到的内容
+                    L.i("二维码结果:"+scanResult);
+                }
             }
         }
     }
