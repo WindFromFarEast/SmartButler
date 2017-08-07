@@ -17,13 +17,31 @@
         android:layout_height="wrap_content"
         android:hint="@string/courier_number"/>
 
-    <Button
-        android:id="@+id/btn_query"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_start"
-        android:textColor="@android:color/white"
-        android:text="@string/query"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:textColor="@android:color/white"
+            android:text="@string/query"/>
+
+        <Button
+            android:id="@+id/btn_help"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_start"
+            android:textColor="@android:color/white"
+            android:text="@string/courier_help"/>
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/lv_timeline"

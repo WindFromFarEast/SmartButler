@@ -105,6 +105,8 @@ public class WechatFragment extends Fragment
             {
                 //成功获得新闻Json数据
                 L.i("微信精选:"+response.toString());
+                //清空数据源
+                wechatNewsList.clear();
                 //解析Json数据,完成数据源
                 parseJson(response);
                 //通知适配器刷新数据源

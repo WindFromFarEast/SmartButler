@@ -42,12 +42,15 @@ import java.util.List;
 
 public class ButlerFragment extends Fragment implements View.OnClickListener
 {
+    //用ListView显示用户与机器人的对话
     private ListView lv_chatting;
     //ListView数据源
     private List<ChattingText> mList=new ArrayList<>();
     //ListView适配器
     private ChattingAdapter adapter;
+    //发送按钮
     private Button btn_chatting_send;
+    //文本内容框
     private EditText et_chatting_text;
 
     @Override

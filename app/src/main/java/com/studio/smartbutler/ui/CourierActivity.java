@@ -1,6 +1,7 @@
 package com.studio.smartbutler.ui;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
     private EditText et_company;
     private EditText et_courier_number;
     private Button btn_query;
+    private Button btn_help;
     private ListView lv_timeline;
     //聚合Api返回的Json结果
     private String response=null;
@@ -44,6 +46,8 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
     private List<Courier> mList=new ArrayList<>();
     //ListView适配器
     private CourierAdapter adapter;
+    //AlertDialog
+    private AlertDialog.Builder builder;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -59,10 +63,28 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
         et_company= (EditText) findViewById(R.id.et_company);
         et_courier_number= (EditText) findViewById(R.id.et_courier_number);
         btn_query= (Button) findViewById(R.id.btn_query);
+        btn_help= (Button) findViewById(R.id.btn_help);
         lv_timeline= (ListView) findViewById(R.id.lv_timeline);
-
+        //初始化Dialog
+        initDialog();
         //设置监听器
         btn_query.setOnClickListener(this);
+        btn_help.setOnClickListener(this);
+    }
+
+    //初始化Dialog
+    private void initDialog()
+    {
+        builder= new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.courier_help));
+        builder.setMessage(getString(R.string.courier_help_content));
+        builder.setNegativeButton(getString(R.string.courier_help_cancel),null);
+    }
+
+    //显示Dialog
+    private void showHelpDialog()
+    {
+        builder.create().show();
     }
 
     //监听事件
@@ -75,6 +97,12 @@ public class CourierActivity extends BaseActivity implements View.OnClickListene
             {
                 //点击查询按钮查询物流信息
                 queryCourier();
+                break;
+            }
+            case R.id.btn_help:
+            {
+                //点击帮助按钮
+                showHelpDialog();
                 break;
             }
         }

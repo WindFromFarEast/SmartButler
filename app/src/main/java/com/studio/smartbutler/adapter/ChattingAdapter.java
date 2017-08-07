@@ -22,7 +22,7 @@ import static com.studio.smartbutler.utils.StaticClass.TYPE_RIGHT_TEXT;
  * file name: ChattingAdapter
  * creator: WindFromFarEast
  * created time: 2017/7/26 11:38
- * description: 聊天ListView适配器
+ * description: 机器人智能问答ListView适配器
  */
 
 public class ChattingAdapter extends BaseAdapter

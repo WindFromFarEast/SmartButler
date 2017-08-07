@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.iflytek.cloud.Setting;
 import com.kymjs.rxvolley.RxVolley;
 import com.kymjs.rxvolley.client.HttpCallback;
+import com.kymjs.rxvolley.http.VolleyError;
 import com.studio.smartbutler.R;
 import com.studio.smartbutler.service.SmsService;
 import com.studio.smartbutler.utils.L;
@@ -153,7 +154,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     }
                     else
                     {
-                        Toast.makeText(SettingActivity.this,"本应用只适配Android6.0以上",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActivity.this,getString(R.string.sms_version_warning),Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
@@ -175,12 +176,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             }
             case R.id.ll_scan_qrcode:
             {
+                //点击扫一扫
                 Intent openCameraIntent=new Intent(this,CaptureActivity.class);
                 startActivityForResult(openCameraIntent,StaticClass.SCAN_QRCODE_REQUEST_CODE);
+                Toast.makeText(this,"开发的宝宝太懒了，所以这个功能只是单纯的扫一扫哟",Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.ll_my_qrcode:
             {
+                //点击我的二维码
                 Intent intent=new Intent(this,MyQRCodeActivity.class);
                 startActivity(intent);
                 break;
@@ -203,6 +207,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         //检测是否为最新版本
         RxVolley.get(StaticClass.LATEST_VERSION_INFO_URL, new HttpCallback()
         {
+            //请求成功
             @Override
             public void onSuccess(String response)
             {
@@ -220,6 +225,14 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     showVersionDialog();
                 }
             }
+            //请求失败
+            @Override
+            public void onFailure(VolleyError error)
+            {
+                //没有检测到服务器上的更新配置信息文件则默认当前已是最新版本
+                Toast.makeText(getApplicationContext(),getString(R.string.is_latest_version),Toast.LENGTH_SHORT).show();
+            }
+            //
         });
     }
 

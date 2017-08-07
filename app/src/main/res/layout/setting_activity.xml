@@ -87,6 +87,7 @@
 
     <LinearLayout
         android:id="@+id/ll_check_version"
+        android:clickable="true"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -123,6 +124,7 @@
 
     <LinearLayout
         android:id="@+id/ll_scan_qrcode"
+        android:clickable="true"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -159,6 +161,7 @@
 
     <LinearLayout
         android:id="@+id/ll_my_qrcode"
+        android:clickable="true"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -195,6 +198,7 @@
 
     <LinearLayout
         android:id="@+id/ll_location"
+        android:clickable="true"
         android:background="@android:color/white"
         android:orientation="horizontal"
         android:gravity="center_vertical"

@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity
                 case StaticClass.HANDLER_SPLASH:
                 {
                     //判断是否第一次启动App,是就跳转到引导页,不是就跳转到主页
-                    if (isFirst())
+                    if (isFirstRun())
                     {
                         startActivity(new Intent(SplashActivity.this, GuideActivity.class));
                     }
@@ -69,18 +69,18 @@ public class SplashActivity extends AppCompatActivity
     //初始化View
     private void initView()
     {
-        //延迟3000ms后发送消息
+        //延迟3000ms后发送消息，即在闪屏页停留三秒
         handler.sendEmptyMessageDelayed(StaticClass.HANDLER_SPLASH,3000);
-
+        //获取控件实例
         tv_splash= (TextView) findViewById(R.id.tv_splash);
-
-        //设置字体
+        //设置“智能管家”字体
         UtilTools.setTypeface(tv_splash);
     }
 
     //判断App是否第一次运行
-    private boolean isFirst()
+    private boolean isFirstRun()
     {
+        //利用SharedPreferences实现
         Boolean isFirst=SharedUtils.getBoolean(StaticClass.FIRST_RUN,true);
         if (isFirst)
         {
