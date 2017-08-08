@@ -1,5 +1,7 @@
 智能管家正式版Version 1.0
 
+![image](https://github.com/WindFromFarEast/SmartButler/blob/master/resultPic/cover.png)
+
 智能管家是一个基于用户管理系统的工具类App，用户可以使用智能管家来获取以下服务：
 1、智能机器人问答（机器人语音回复）
 
@@ -36,3 +38,12 @@
 9、头像设置、找回密码等用户管理功能
 
 ![image](https://github.com/WindFromFarEast/SmartButler/blob/master/resultPic/avatar.png)
+
+
+
+----------------------------------------------------------------------------------
+
+集成的第三方SDK、库、框架：BaiduMap、RxVolly、MKLoader、Bmob后端云、CircleImageView、Picasso、PhotoView、NumberProgressBar、ZXing、科大讯飞TTS
+
+
+数据来源：聚合数据、科大讯飞
