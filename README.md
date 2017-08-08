@@ -31,7 +31,7 @@
 
 8、检测版本更新
 
-![image]()
+![image](https://github.com/WindFromFarEast/SmartButler/blob/master/resultPic/SmartButler_update.gif)
 
 9、头像设置、找回密码等用户管理功能
 
