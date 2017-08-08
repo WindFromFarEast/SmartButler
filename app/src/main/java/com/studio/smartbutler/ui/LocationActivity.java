@@ -15,8 +15,6 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.studio.smartbutler.R;
-import com.studio.smartbutler.utils.L;
-
 import java.util.List;
 
 /**
@@ -34,6 +32,7 @@ public class LocationActivity extends BaseActivity
     private BaiduMap baiduMap;
     public LocationClient mLocationClient = null;
     public BDLocationListener myListener = new MyLocationListener();
+    private LocationClientOption option;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -88,12 +87,12 @@ public class LocationActivity extends BaseActivity
 
     private void initLocation()
     {
-        LocationClientOption option = new LocationClientOption();
+        option = new LocationClientOption();
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         //可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
         option.setCoorType("bd09ll");
         //可选，默认gcj02，设置返回的定位结果坐标系
-        int span=5000;
+        int span=8000;
         option.setScanSpan(span);
         //可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
         option.setIsNeedAddress(true);

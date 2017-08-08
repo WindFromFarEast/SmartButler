@@ -465,6 +465,7 @@ public class UserFragment extends Fragment implements View.OnClickListener
                 {
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
+                    //得到图片路径
                     Uri uri = getImageUri(getActivity(), bitmap);
                     //将头像保存到服务器
                     saveAvatarToBmob(getUriPath(uri, null));
